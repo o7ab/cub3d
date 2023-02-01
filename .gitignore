@@ -1,0 +1,8 @@
+.vscode
+*.o
+*.dSYM
+cub3d
+.DS_Store
+mlx
+libmlx.a
+libft
