@@ -48,6 +48,9 @@ SRCS        :=      libft/ft_atoi.c \
                           libft/ft_tolower.c \
                           libft/ft_toupper.c \
                           main.c \
+						  hook.c \
+						  raycast.c \
+						  map.c
                           
 OBJS        := $(SRCS:.c=.o)
 
@@ -64,7 +67,7 @@ RM		    := rm -f
 
 $(NAME): ${OBJS}
 			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			@ $(MAKE) -C mlx all >/dev/null 2>&1
+			@ $(MAKE) -C mlx all
 			@ cp ./mlx/libmlx.a .
 			$(CC) $(CFLAGS) -g3 -Ofast -o $(NAME) $(OBJS) -Imlx -Lmlx -lmlx -lm -framework OpenGL -framework AppKit
 			@echo "$(GREEN)$(NAME) created[0m ✔️"
