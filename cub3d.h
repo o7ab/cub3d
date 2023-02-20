@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:20:12 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/18 01:51:29 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:19:55 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "mlx/mlx.h"
 
 #define WIDTH 1048
-#define MAPWIDTH 24
-#define MAPHEIGHT 24
+#define MAPWIDTH 12
+#define MAPHEIGHT 12
 #define HEIGHT 800
 #define PI 3.14159265359
 #define GRID 64
@@ -97,7 +97,8 @@ typedef struct s_cub{
 // }	t_player;
 
 int		cub_key_press(int keycode, t_cub *cub);
-void	ft_raycast(t_cub *cub);
+int	ft_raycast(t_cub *cub);
+// void	ft_raycast(t_cub *cub);
 char	**init_map(t_cub *cub);
 
 #endif
