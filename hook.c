@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:19:30 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/20 23:07:54 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/21 18:19:54 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,6 @@ int	cub_key_press(int keycode, t_cub *cub)
 	printf("key press\n");
 	printf("posx = %f\n", cub->posx);
 	printf("posy = %f\n", cub->posy);
-	mlx_destroy_image(cub->mlx, cub->mlx_img);
-	cub->address = mlx_get_data_addr(cub->mlx_img, &cub->bits_per_pixel, &cub->line_length, &cub->endian);
-	cub->mlx_img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
-	mlx_clear_window(cub->mlx, cub->mlx_win);
 	ft_raycast(cub);
 	return (0);
 }
