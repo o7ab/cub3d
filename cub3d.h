@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:20:12 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/20 16:19:55 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/22 22:24:37 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,21 @@ typedef struct s_cub{
 	double	move_speed;
 	double	rotate;
 	char	**map;
+	int		mapX;
+	int		mapY;
 }	t_cub;
 
+typedef struct s_rayc{
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+	double	perpwalldist;
+	int		side;
+	int		hit
+	int		stepX;
+	int		stepY;
+}	t_rayc;
 
 // int worldMap[24][24]=
 // {

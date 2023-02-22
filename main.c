@@ -6,47 +6,12 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:10:41 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/20 21:22:03 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/22 21:45:23 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// void	put_cubes(t_cub *cub, int color, int x, int y)
-// {
-// 	int i = 0;
-// 	int j = 0;
-// 	while (i < sqrt(GRID))
-// 	{
-// 		j = 0;
-// 		while (j < sqrt(GRID))
-// 		{
-// 			mlx_pixel_put(cub->mlx, cub->mlx_win, x + i, y + j, color);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
-
-// void	draw_minimap(t_cub *cub, t_cub *cub)
-// {
-// 	int i = 0;
-// 	int j = 0;
-// 	(void) cub;
-// 	while (i < HEIGHT / GRID)
-// 	{
-// 		j = 0;
-// 		while (j < WIDTH / GRID)
-// 		{
-// 			if (worldMap[i][j] == 1)
-// 				put_cubes(cub, 0x00FF0000, j * 64, i * 64);
-// 			else
-// 				put_cubes(cub, 0x00FFFFFF, j * 64, i * 64);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
 void	init_structs(t_cub *cub)
 {
 	cub->mlx = mlx_init();
