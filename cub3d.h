@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:20:12 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/22 22:24:37 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:39:24 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 # include "libft/libft.h"
 # include "mlx/mlx.h"
 
-#define WIDTH 1048
-#define MAPWIDTH 12
-#define MAPHEIGHT 12
-#define HEIGHT 800
-#define PI 3.14159265359
-#define GRID 64
+# define WIDTH 1048
+# define MAPWIDTH 12
+# define MAPHEIGHT 12
+# define HEIGHT 800
+# define PI 3.14159265359
+# define GRID 64
 
 typedef struct s_cub{
 	void	*mlx;
@@ -51,8 +51,8 @@ typedef struct s_cub{
 	double	move_speed;
 	double	rotate;
 	char	**map;
-	int		mapX;
-	int		mapY;
+	int		mapx;
+	int		mapy;
 }	t_cub;
 
 typedef struct s_rayc{
@@ -62,56 +62,15 @@ typedef struct s_rayc{
 	double	deltadisty;
 	double	perpwalldist;
 	int		side;
-	int		hit
-	int		stepX;
-	int		stepY;
+	int		stepx;
+	int		stepy;
 }	t_rayc;
 
-// int worldMap[24][24]=
-// {
-//   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,1,0,1,0,1,0,0,0,1},
-//   {1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,1},
-//   {1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,1,1,0,1,1,0,0,0,0,1,0,1,0,1,0,0,0,1},
-//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,1,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-// };
-
-// typedef struct s_player{
-// 	double	posx;
-// 	double	posy;
-// 	double	dirx;
-// 	double	diry;
-// 	double	planex;
-// 	double	planey;
-// 	double	raydirx;
-// 	double	raydiry;
-// 	double	move_speed;
-// 	double	rotate;
-// 	char	**map;
-// }	t_player;
-
 int		cub_key_press(int keycode, t_cub *cub);
-int	ft_raycast(t_cub *cub);
-// void	ft_raycast(t_cub *cub);
+int		ft_raycast(t_cub *cub);
 char	**init_map(t_cub *cub);
+void	ft_put_pixel(t_cub *cub, int x, int y, int color);
+void	init_line(t_cub *cub, t_rayc *rayc);
+void	ft_init_var(t_cub *cub, t_rayc *rayc, int x);
 
 #endif
