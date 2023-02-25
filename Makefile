@@ -52,7 +52,17 @@ SRCS        :=      libft/ft_atoi.c \
 						  raycast.c \
 						  raycast_help.c \
 						  map.c \
-						  mouse.c
+						  mouse.c \
+						  parsing/parse.c \
+						  parsing/valid_parse.c \
+						  parsing/parse.content.c \
+						  parsing/parse.elemnt.c \
+						  parsing/parse_utilties.c \
+						  parsing/Errors.c \
+						  parsing/Errors2.c \
+						  get_next_line/get_next_line.c \
+						  get_next_line/get_next_line_utils.c
+
                           
 OBJS        := $(SRCS:.c=.o)
 

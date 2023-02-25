@@ -6,11 +6,35 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:10:41 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/25 15:24:05 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:38:40 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	ft_set_player_dir(t_cub *cub, int j, int k)
+{
+	if (cub->map[j][k] == 'N')
+	{
+		cub->dirx = 1;
+		cub->planey = -0.66;
+	}
+	else if (cub->map[j][k] == 'W')
+	{
+		cub->diry = 1;
+		cub->planex = 0.66;
+	}
+	else if (cub->map[j][k] == 'E')
+	{
+		cub->diry = -1;
+		cub->planex = -0.66;
+	}
+	else
+	{
+		cub->dirx = -1;
+		cub->planey = 0.66;
+	}
+}
 
 void	init_structs(t_cub *cub)
 {
@@ -21,7 +45,8 @@ void	init_structs(t_cub *cub)
 			&cub->line_length, &cub->endian);
 	cub->posx = 6;
 	cub->posy = 6;
-	cub->dirx = 1;
+	ft_set_player_dir(cub, cub->mapx, cub->mapy);
+	cub->dirx = 0;
 	cub->diry = 0;
 	cub->planex = 0;
 	cub->planey = 0.66;
@@ -62,12 +87,11 @@ int	main(int argc, char **argv)
 {
 	t_cub		cub;
 
-	(void) argc;
-	(void) argv;
+	if (parse_map(&cub, argc, argv))
+		return (0);
 	init_structs(&cub);
 	ft_raycast(&cub);
 	mlx_hook(cub.mlx_win, 2, 1L << 0, cub_key_press, &cub);
 	mlx_hook(cub.mlx_win, 6, 1L << 6, move_mouse, &cub);
-	// mlx_mouse_hook(cub.mlx_win, cub_mouse_press, &cub);
 	mlx_loop(cub.mlx);
 }
