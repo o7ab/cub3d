@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:20:12 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/23 14:39:24 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:57:59 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ char	**init_map(t_cub *cub);
 void	ft_put_pixel(t_cub *cub, int x, int y, int color);
 void	init_line(t_cub *cub, t_rayc *rayc);
 void	ft_init_var(t_cub *cub, t_rayc *rayc, int x);
+int		cub_mouse_press(int keycode, t_cub *cub);
 
 #endif

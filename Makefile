@@ -51,7 +51,8 @@ SRCS        :=      libft/ft_atoi.c \
 						  hook.c \
 						  raycast.c \
 						  raycast_help.c \
-						  map.c
+						  map.c \
+						  mouse.c
                           
 OBJS        := $(SRCS:.c=.o)
 
