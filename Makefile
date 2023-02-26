@@ -51,9 +51,11 @@ SRCS        :=      	libft/ft_atoi.c \
 						  hook.c \
 						  raycast.c \
 						  raycast_help.c \
+						  raycast_helper.c \
 						  map.c \
 						  mouse.c \
                           parsing/more.c\
+						  images.c \
 						  parsing/parse.c \
 						  parsing/valid_parse.c \
 						  parsing/parse.content.c \

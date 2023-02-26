@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:10:41 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/25 18:38:40 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:24:07 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 void	ft_set_player_dir(t_cub *cub, int j, int k)
 {
-	if (cub->map[j][k] == 'N')
+	(void) j;
+	(void) k;
+	if (cub->map[cub->mapy][cub->mapx] == 'N')
 	{
 		cub->dirx = 1;
 		cub->planey = -0.66;
 	}
-	else if (cub->map[j][k] == 'W')
+	else if (cub->map[cub->mapy][cub->mapx] == 'W')
 	{
 		cub->diry = 1;
 		cub->planex = 0.66;
 	}
-	else if (cub->map[j][k] == 'E')
+	else if (cub->map[cub->mapy][cub->mapx] == 'E')
 	{
 		cub->diry = -1;
 		cub->planex = -0.66;
@@ -41,18 +43,21 @@ void	init_structs(t_cub *cub)
 	cub->mlx = mlx_init();
 	cub->mlx_win = mlx_new_window(cub->mlx, WIDTH, HEIGHT, "cub3d");
 	cub->mlx_img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
-	cub->address = mlx_get_data_addr(cub->mlx_img, &cub->bits_per_pixel,
-			&cub->line_length, &cub->endian);
+	cub->address = mlx_get_data_addr(cub->mlx_img, &cub->bpp,
+			&cub->line_len, &cub->end);
 	cub->posx = 6;
 	cub->posy = 6;
-	ft_set_player_dir(cub, cub->mapx, cub->mapy);
-	cub->dirx = 0;
+	cub->mapx = (int)cub->posx;
+	cub->mapy = (int)cub->posy;
+	cub->dirx = -1;
 	cub->diry = 0;
 	cub->planex = 0;
 	cub->planey = 0.66;
 	cub->move_speed = 0.15;
 	cub->rotate = 0.15;
 	cub->map = init_map(cub);
+	init_text(cub);
+	// ft_set_player_dir(cub, cub->mapx, cub->mapy);
 }
 
 void	rotate(double angle, t_cub *cub)
@@ -77,7 +82,7 @@ int	move_mouse(int x, int y, t_cub *cub)
 	double	angle_r;
 
 	(void)y;
-	angle_r = (x - WIDTH / 2) / 1200.0;
+	angle_r = -(x - WIDTH / 2) / 1200.0;
 	rotate(angle_r, cub);
 	mlx_mouse_move(cub->mlx_win, WIDTH / 2, HEIGHT / 2);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omar <omar@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 18:00:15 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/26 16:01:17 by omar             ###   ########.fr       */
+/*   Updated: 2023/02/26 16:25:37 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	parse_map(t_cub *data, int argc, char **argv)
 	// !data->c_color_count || !data->f_color_count)
 	// 	print_error(data, "Wrong Config File");
 	parse_map_contents(data);
-	// validate_map_contents(data);
+	validate_map_contents(data);
 	return (0);
 }

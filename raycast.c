@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:25 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/25 20:01:40 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:16:47 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,78 +36,59 @@ void	draw_line(t_cub *cub, int x)
 	}
 }
 
-void	ft_dda(t_rayc *rayc, t_cub *cub)
+int	ret_color(t_cub *cub, t_rayc *rayc)
 {
-	int	hit;
+	int	color;
 
-	hit = 0;
-	while (hit == 0)
-	{
-		if (rayc->sidedistx < rayc->sidedisty)
-		{
-			rayc->sidedistx += rayc->deltadistx;
-			cub->mapx += rayc->stepx;
-			rayc->side = 0;
-		}
-		else
-		{
-			rayc->sidedisty += rayc->deltadisty;
-			cub->mapy += rayc->stepy;
-			rayc->side = 1;
-		}
-		if (ft_strlen(cub->map[cub->mapx]) > (size_t)cub->mapy)
-			if (cub->map[cub->mapx][cub->mapy] == '1')
-				hit = 1;
-	}
-}
-
-void	get_side_dist(t_cub *cub, t_rayc *rayc)
-{
-	if (cub->raydiry < 0)
-	{
-		rayc->stepy = -1;
-		rayc->sidedisty = (cub->posy - cub->mapy) * rayc->deltadisty;
-	}
-	else
-	{
-		rayc->stepy = 1;
-		rayc->sidedisty = (cub->mapy + 1.0 - cub->posy) * rayc->deltadisty;
-	}
-	if (cub->raydirx < 0)
-	{
-		rayc->stepx = -1;
-		rayc->sidedistx = (cub->posx - cub->mapx) * rayc->deltadistx;
-	}
-	else
-	{
-		rayc->stepx = 1;
-		rayc->sidedistx = (cub->mapx + 1.0 - cub->posx) * rayc->deltadistx;
-	}
+	color = 0;
+	if (rayc->side == 0 && cub->raydirx > 0)
+		color = (int)cub->texture[NO][GRID * rayc->texy + rayc->texx];
+	if (rayc->side == 0 && cub->raydirx < 0)
+		color = (int)cub->texture[SO][GRID * rayc->texy + rayc->texx];
+	if (rayc->side == 1 && cub->raydiry > 0)
+		color = (int)cub->texture[WE][GRID * rayc->texy + rayc->texx];
+	if (rayc->side == 1 && cub->raydiry < 0)
+		color = (int)cub->texture[EA][GRID * rayc->texy + rayc->texx];
+	if (rayc->side == 1)
+		color = (color >> 1) & 8355711;
+	return (color);
 }
 
 void	get_line_dist(t_cub *cub, t_rayc *rayc, int x)
 {
-	int	y;
-	int	color;
-
-	y = 0;
-	color = 0;
 	if (rayc->side == 0)
 		rayc->perpwalldist = (rayc->sidedistx - rayc->deltadistx);
 	else
 		rayc->perpwalldist = (rayc->sidedisty - rayc->deltadisty);
 	init_line(cub, rayc);
-	while (y < HEIGHT)
+	while (rayc->y < HEIGHT)
 	{
-		if (y >= cub->line_start && y <= cub->line_end)
+		if (rayc->y >= cub->line_start && rayc->y <= cub->line_end)
 		{
-			color = 0x00F9BA84;
-			if (rayc->side == 1)
-				color = (color >> 1) & 8355711;
-			cub->buffer[y][x] = color;
+			rayc->texy = (int)rayc->texpos & (cub->img_height[0] - 1);
+			rayc->texpos += rayc->step;
+			cub->buffer[rayc->y][x] = ret_color(cub, rayc);
 		}
-		y++;
+		rayc->y++;
 	}
+}
+
+void	init_rayc(t_rayc *rayc)
+{
+	rayc->sidedistx = 0;
+	rayc->sidedisty = 0;
+	rayc->deltadistx = 0;
+	rayc->deltadisty = 0;
+	rayc->perpwalldist = 0;
+	rayc->stepx = 0;
+	rayc->stepy = 0;
+	rayc->wallx = 0;
+	rayc->side = 0;
+	rayc->y = 0;
+	rayc->texx = 0;
+	rayc->texy = 0;
+	rayc->texpos = 0;
+	rayc->step = 0;
 }
 
 int	ft_raycast(t_cub *cub)
@@ -118,9 +99,11 @@ int	ft_raycast(t_cub *cub)
 	x = 0;
 	while (x < WIDTH)
 	{
+		init_rayc(&rayc);
 		ft_init_var(cub, &rayc, x);
 		get_side_dist(cub, &rayc);
 		ft_dda(&rayc, cub);
+		// printf("test\n");
 		get_line_dist(cub, &rayc, x);
 		draw_line(cub, x);
 		x++;

@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:19:30 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/22 21:44:50 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 01:27:23 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_move_vert(t_cub *cub, int keycode)
 	}
 }
 
-void	rotate_right(t_cub *cub)
+void	rotate_left(t_cub *cub)
 {
 	double	olddirx;
 	double	oldplanex;
@@ -80,7 +80,7 @@ void	ft_rotate(t_cub *cub, int keycode)
 
 	olddirx = cub->dirx;
 	oldplanex = cub->planex;
-	if (keycode == 123)
+	if (keycode == 124)
 	{
 		cub->dirx = cub->dirx * cos(-cub->rotate)
 			- cub->diry * sin(-cub->rotate);
@@ -91,8 +91,8 @@ void	ft_rotate(t_cub *cub, int keycode)
 		cub->planey = oldplanex * sin(-cub->rotate)
 			+ cub->planey * cos(-cub->rotate);
 	}
-	if (keycode == 124)
-		rotate_right(cub);
+	if (keycode == 123)
+		rotate_left(cub);
 }
 
 int	cub_key_press(int keycode, t_cub *cub)

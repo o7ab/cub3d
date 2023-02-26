@@ -6,13 +6,13 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 13:49:10 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/25 17:52:46 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 01:33:17 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	mouse_rotate_right(t_cub *cub)
+void	mouse_rotate_left(t_cub *cub)
 {
 	double	olddirx;
 	double	oldplanex;
@@ -36,7 +36,6 @@ int	cub_mouse_press(int keycode, t_cub *cub)
 
 	olddirx = cub->dirx;
 	oldplanex = cub->planex;
-	printf("keycode: %d\n", keycode);
 	if (keycode == 4)
 	{
 		cub->dirx = cub->dirx * cos(-cub->rotate)
@@ -49,7 +48,7 @@ int	cub_mouse_press(int keycode, t_cub *cub)
 			+ cub->planey * cos(-cub->rotate);
 	}
 	if (keycode == 5)
-		mouse_rotate_right(cub);
+		mouse_rotate_left(cub);
 	ft_raycast(cub);
 	return (0);
 }
