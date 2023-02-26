@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 17:59:40 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/25 18:02:29 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:22:28 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,4 @@ void	calc_map_width_height(t_cub *cub)
 		i++;
 	}
 	cub->map_height = i;
-	// cub->player.rays = ft_calloc(WIDTH, sizeof(struct s_ray));
-	// if (!cub->player.rays)
-	// 	print_error(cub, "Malloc Error!");
 }

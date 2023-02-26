@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 18:00:53 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/25 18:32:58 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:23:25 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	check_chars(t_cub *data)
 			check_player_pos(data, c, &x);
 			if (take_player_pos(c) == 0)
 			{
-				data->mapx = j;
-				data->mapy = i;
+				data->posx = (double)j;
+				data->posy = (double)i;
 			}
 			j++;
 		}
@@ -76,17 +76,19 @@ int	check_if_no_more_map(t_cub *data)
 void	check_spaces(t_cub *data, int i, int j)
 {
 	if (i + 1 < data->map_height)
+	{
 		if (data->map[i + 1][j] != ' ' && data->map[i + 1][j] != '1')
-			print_error(data, "Map Not Closed by walls!");
+			print_error(data, "Map Not Closed by walls!1");
+	}
 	if (i - 1 >= 0)
 		if (data->map[i - 1][j] != ' ' && data->map[i - 1][j] != '1')
-			print_error(data, "Map Not Closed by walls!");
+			print_error(data, "Map Not Closed by walls!2");
 	if (j + 1 < data->map_width)
 		if (data->map[i][j + 1] != ' ' && data->map[i][j + 1] != '1')
-			print_error(data, "Map Not Closed by walls!");
+			print_error(data, "Map Not Closed by walls!3");
 	if (j - 1 >= 0)
 		if (data->map[i][j - 1] != ' ' && data->map[i][j - 1] != '1')
-			print_error(data, "Map Not Closed by walls!");
+			print_error(data, "Map Not Closed by walls!4");
 }
 
 void	check_spaces_from_all_dir(t_cub *data)

@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   parse.elemnt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omar <omar@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 18:00:43 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/26 16:16:30 by omar             ###   ########.fr       */
+/*   Updated: 2023/02/26 18:21:27 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+int	error(char **color_split)
+{
+	free_2d(&color_split);
+	return (1);
+}
 
 int	read_color(t_cub *data, char **split_line, char type)
 {
@@ -24,10 +30,7 @@ int	read_color(t_cub *data, char **split_line, char type)
 	color[1] = color_atoi(ft_strtrim(color_split[1], " \n"));
 	color[2] = color_atoi(ft_strtrim(color_split[2], " \n"));
 	if (color[0] == -1 || color[1] == -1 || color[2] == -1)
-	{
-		free_2d(&color_split);
-		return (1);
-	}
+		return (error(color_split));
 	free_2d(&color_split);
 	if (type == 'F')
 	{
@@ -75,23 +78,21 @@ int	handle_elements(t_cub *data, char **split_line)
 			data->we_path = ft_strdup(split_line[1]);
 		else if (!ft_strncmp(split_line[0], "EA", 3))
 			data->ea_path = ft_strdup(split_line[1]);
-		else{
+		else
 			return (1);
-		}
 	}
-	else if (ft_strlen(split_line[0]) == 1){
+	else if (ft_strlen(split_line[0]) == 1)
 		return (handle_color(data, split_line));
-	}
 	else
 		return (1);
 	return (0);
 }
 
-void	norm_free(char *str1, char **str2)
-{
-	free_2d(&str2);
-	free(str1);
-}
+// void	norm_free(char *str1, char **str2)
+// {
+// 	free_2d(&str2);
+// 	free(str1);
+// }
 
 void	check_elements(t_cub *data)
 {

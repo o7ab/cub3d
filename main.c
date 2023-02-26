@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:10:41 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/26 16:24:07 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:58:55 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	init_structs(t_cub *cub)
 	cub->mlx_img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
 	cub->address = mlx_get_data_addr(cub->mlx_img, &cub->bpp,
 			&cub->line_len, &cub->end);
-	cub->posx = 6;
-	cub->posy = 6;
 	cub->mapx = (int)cub->posx;
 	cub->mapy = (int)cub->posy;
 	cub->dirx = -1;
@@ -55,9 +53,8 @@ void	init_structs(t_cub *cub)
 	cub->planey = 0.66;
 	cub->move_speed = 0.15;
 	cub->rotate = 0.15;
-	cub->map = init_map(cub);
 	init_text(cub);
-	// ft_set_player_dir(cub, cub->mapx, cub->mapy);
+	ft_set_player_dir(cub, cub->mapx, cub->mapy);
 }
 
 void	rotate(double angle, t_cub *cub)

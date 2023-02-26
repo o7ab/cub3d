@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:20:12 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/26 16:22:17 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:21:42 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@
 # include <unistd.h>
 # include "libft/libft.h"
 # include "mlx/mlx.h"
-#include <sys/errno.h>
+# include <sys/errno.h>
 # include "fcntl.h"
 # include "get_next_line/get_next_line.h"
-
-
 
 # define WIDTH 1048
 # define MAPWIDTH 12
@@ -43,20 +41,20 @@ enum	e_type
 };
 
 typedef struct s_cub{
-	char			*no_path;
-	char			*so_path;
-	char			*we_path;
-	char			*ea_path;
-	int				c_color;
-	int				f_color;
-	int				map_width;
-	int				map_height;
-	int				config_fd;
-	double			start_angle;
-	int				index;
-	int				c_color_count;
-	int				f_color_count;
-	char			**map;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	int		c_color;
+	int		f_color;
+	int		map_width;
+	int		map_height;
+	int		config_fd;
+	double	start_angle;
+	int		index;
+	int		c_color_count;
+	int		f_color_count;
+	char	**map;
 	void	*mlx;
 	void	*mlx_win;
 	void	*mlx_img;
@@ -109,7 +107,7 @@ typedef struct s_rayc{
 
 int		cub_key_press(int keycode, t_cub *cub);
 int		ft_raycast(t_cub *cub);
-char	**init_map(t_cub *cub);
+// char	**init_map(t_cub *cub);
 void	init_text(t_cub *cub);
 void	ft_put_pixel(t_cub *cub, int x, int y, int color);
 void	init_line(t_cub *cub, t_rayc *rayc);
@@ -133,5 +131,6 @@ void	free_all(t_cub *data);
 void	validate_map_contents(t_cub *data);
 void	ft_dda(t_rayc *rayc, t_cub *cub);
 void	get_side_dist(t_cub *cub, t_rayc *rayc);
-
+int		obj_status(t_cub *data, int x, int y, int to_do);
+void	norm_free(char *str1, char **str2);
 #endif

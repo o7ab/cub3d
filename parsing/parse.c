@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 18:00:15 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/26 16:25:37 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:15:24 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ int	parse_map(t_cub *data, int argc, char **argv)
 {
 	check_map_name(data, argc, argv);
 	check_elements(data);
-	// if (!data->no_path || !data->so_path || !data->we_path || !data->ea_path || \
-	// !data->c_color_count || !data->f_color_count)
-	// 	print_error(data, "Wrong Config File");
 	parse_map_contents(data);
 	validate_map_contents(data);
 	return (0);

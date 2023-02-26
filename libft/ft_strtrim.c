@@ -16,19 +16,6 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	// int		i;
-	// char	*ret;
-
-	// ret = (char *)s1;
-	// if (!s1 || !set)
-	// 	return (0);
-	// while (*s1 && ft_strchr(set, *s1))
-	// 	s1++;
-	// i = ft_strlen(s1);
-	// while (*s1 && ft_strchr(set, s1[i]))
-	// 	i--;
-	// ret = ft_substr(s1, 0, i + 1);
-	// return (ret);
 	char	*str;
 	size_t	start_index;
 	size_t	end_index;
@@ -44,10 +31,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str = ft_substr(s1, start_index, (end_index - start_index + 1));
 	return (str);
 }
-
-// int main()
-// { 
-// 	char *test = ft_strtrim("11111Hello World321", "123");
-// 	printf("%s \n", test);
-// 	return (0);
-// }

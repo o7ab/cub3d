@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 19:09:17 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/25 20:08:53 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 18:09:31 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	print_error(t_cub *data, char *msg)
 	(void)data;
 	ft_putstr_fd(msg, 2);
 	ft_putchar_fd('\n', 2);
-	// free_all(data);
 	printf("test\n");
 	exit(EXIT_FAILURE);
 }

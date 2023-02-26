@@ -6,7 +6,7 @@
 /*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 19:08:25 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/26 16:16:47 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 17:50:26 by oabushar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	draw_line(t_cub *cub, int x)
 	while (i < HEIGHT)
 	{
 		if (i < HEIGHT / 2)
-			ft_put_pixel(cub, x, i, 0x0098FF98);
+			ft_put_pixel(cub, x, i, cub->f_color);
 		else if (i > HEIGHT / 2)
-			ft_put_pixel(cub, x, i, 0x007E0CD6);
+			ft_put_pixel(cub, x, i, cub->c_color);
 		i++;
 	}
 	i = 0;
@@ -103,7 +103,6 @@ int	ft_raycast(t_cub *cub)
 		ft_init_var(cub, &rayc, x);
 		get_side_dist(cub, &rayc);
 		ft_dda(&rayc, cub);
-		// printf("test\n");
 		get_line_dist(cub, &rayc, x);
 		draw_line(cub, x);
 		x++;
