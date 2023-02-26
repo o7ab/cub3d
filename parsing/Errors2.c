@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Errors2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghazi <aghazi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: omar <omar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 19:26:10 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/25 23:28:03 by aghazi           ###   ########.fr       */
+/*   Updated: 2023/02/26 13:09:59 by omar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,14 @@ int	color_atoi(const char *str)
 		sign = -1;
 	while (str[i] != '\0')
 	{
-        // printf("%d\n",i);
-		if (!ft_isdigit(str[i]) && str[i] != '\n')
-        {
-            printf("atoooooooooooooo44ooo\n");
+		if (!ft_isdigit(str[i]))
 			return (-1);
-        }
 		num = (num * 10) + (str[i] - '0');
 		i++;
 	}
 	free ((char *)str);
 	if (i > 5 || num > 255 || sign < 0)
-    {
-        printf("atooooooooooooooooo\n");
 		return (-1);
-    }
 	return ((int)(num * sign));
 }
 

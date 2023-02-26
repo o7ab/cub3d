@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oabushar <oabushar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: omar <omar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 23:20:12 by oabushar          #+#    #+#             */
-/*   Updated: 2023/02/25 19:30:10 by oabushar         ###   ########.fr       */
+/*   Updated: 2023/02/26 16:11:35 by omar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,5 @@ int	color_atoi(const char *str);
 int	ft_strlen_2d(char **str);
 void	calc_map_width_height(t_cub *cub);
 void	free_all(t_cub *data);
-
+void	validate_map_contents(t_cub *data);
 #endif
